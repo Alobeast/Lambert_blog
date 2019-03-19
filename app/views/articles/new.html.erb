@@ -1,0 +1,19 @@
+<h1>Ceci est une page que c'est pour creer des nouvo articles!</h1>
+
+  <%= simple_form_for @article do |f| %>
+  <!-- [...] -->
+  <%= f.input :title, placeholder: "la y faut mettre un titre" %>
+  <%= f.input :text, placeholder: "la y faut mettre ton texte" %>
+  <%= f.input :main_picture %>
+  <%= f.input :main_picture_cache, as: :hidden %>
+  <%= f.input :sub_picture1 %>
+  <%= f.input :sub_picture1_cache, as: :hidden %>
+  <%= f.input :sub_picture_2 %>
+  <%= f.input :sub_picture_2_cache, as: :hidden %>
+  <%= f.input :sub_picture3 %>
+  <%= f.input :sub_picture3_cache, as: :hidden %>
+  <%= f.input :sub_picture4 %>
+  <%= f.input :sub_picture4_cache, as: :hidden %>
+  <%= f.submit "Leave review" %>
+  <!-- [...] -->
+<% end %>
