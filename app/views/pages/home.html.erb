@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
+<h1>Welcome to Lambert's Blog</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= article.title %>
+      <%= article.text %>
+    </li>
+
+  <% end %>
+</ul>
