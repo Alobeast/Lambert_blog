@@ -1,0 +1,7 @@
+<h1>la faut mettre un comment en fait</h1>
+
+<h3>Add a review</h3>
+<%= simple_form_for [@article, @comment] do |f| %>
+  <%= f.input :text %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>

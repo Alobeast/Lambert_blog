@@ -33,3 +33,6 @@ end
 #image-upload
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
+
+#pundit
+gem 'pundit'

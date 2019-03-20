@@ -4,6 +4,16 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @article = Article.find(params[:article_id])
+    @comment = Comment.new(comment_params)
+    @comment.article = @article
+    @comment.user = current_user
+    @comment.save
+    redirect_to article_path(@article)
+    # else
+    #   @dose = Dose.new
+    #   render "cocktails/show"
+    # end
   end
 
   def edit
@@ -13,5 +23,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:text)
   end
 end
