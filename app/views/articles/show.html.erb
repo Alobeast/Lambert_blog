@@ -1,6 +1,6 @@
 <div>
   <div>
-    <h1>Ceci est une page qui fait montrer des articles!</h1>
+    <h1>Ceci est une page qui fait montrer UN article!</h1>
     <%= @article.title %>
     <%= @article.text %>
 
@@ -10,7 +10,10 @@
     <%= cl_image_tag @article.sub_picture3 %>
     <%= cl_image_tag @article.sub_picture4 %>
   </div>
-
+<%= link_to "Editer?", edit_article_path(@article)  %>
+<%= link_to "EFFACER!", article_path(@article),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
   <div>
     <div>
       <div>
@@ -22,6 +25,10 @@
           <% @article.comments.each do |comment| %>
           <li>
             <%= comment.text %>
+            <%= link_to "Delete", comment_path(comment),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+
           </li>
           <% end %>
         </ul>
