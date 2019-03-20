@@ -6,8 +6,8 @@
     <li>
       <%= article.title %>
       <%= article.text %>
-
       <%= cl_image_tag article.main_picture %>
+      <%= link_to "voir!", article_path(article.id) %>
     </li>
 
   <% end %>

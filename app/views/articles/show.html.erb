@@ -1,9 +1,38 @@
-<h1>Ceci est une page qui fait montrer des articles!</h1>
-<%= @article.title %>
-      <%= @article.text %>
+<div>
+  <div>
+    <h1>Ceci est une page qui fait montrer des articles!</h1>
+    <%= @article.title %>
+    <%= @article.text %>
 
-      <%= cl_image_tag @article.main_picture %>
-      <%= cl_image_tag @article.sub_picture1 %>
-      <%= cl_image_tag @article.sub_picture_2 %>
-      <%= cl_image_tag @article.sub_picture3 %>
-      <%= cl_image_tag @article.sub_picture4 %>
+    <%= cl_image_tag @article.main_picture %>
+    <%= cl_image_tag @article.sub_picture1 %>
+    <%= cl_image_tag @article.sub_picture_2 %>
+    <%= cl_image_tag @article.sub_picture3 %>
+    <%= cl_image_tag @article.sub_picture4 %>
+  </div>
+
+  <div>
+    <div>
+      <div>
+        <h3>Commentaires!</h3>
+        <% if @article.comments.empty? %>
+        <p>Soyez le preums a lacher un comms</p>
+        <% else %>
+        <ul>
+          <% @article.comments.each do |comment| %>
+          <li>
+            <%= comment.text %>
+          </li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  <div>
+      <div>
+        <%= render "comments/new" %>
+      </div>
+    </div>
+  </div>
+
+</div>
