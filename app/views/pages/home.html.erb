@@ -5,7 +5,7 @@
   <% @articles.each do |article| %>
     <li>
       <%= article.title %>
-      <%= article.text %>
+      <%= sanitize article.text %>
       <%= cl_image_tag article.main_picture %>
       <%= link_to "voir!", article_path(article.id) %>
     </li>
