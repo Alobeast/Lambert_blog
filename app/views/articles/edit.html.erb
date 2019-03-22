@@ -3,7 +3,8 @@
   <%= simple_form_for @article do |f| %>
   <!-- [...] -->
   <%= f.input :title, placeholder: "la y faut mettre un titre" %>
-  <%= f.input :text, placeholder: "la y faut mettre ton texte" %>
+  <%= f.input :text, as: :hidden, id: :article_text %>
+  <trix-editor input="article_text"></trix-editor>
   <%= f.input :main_picture %>
   <%= f.input :main_picture_cache, as: :hidden %>
   <%= f.input :sub_picture1 %>

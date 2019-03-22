@@ -36,3 +36,6 @@ gem 'carrierwave', '~> 1.2'
 
 #pundit
 gem 'pundit'
+
+#trix
+gem 'trix'
