@@ -1,14 +1,18 @@
-<h1>Welcome to Lambert's Blog</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Welcome to Lambert's Blog</h1>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= article.title %>
-      <%= sanitize article.text %>
-      <%= cl_image_tag article.main_picture %>
-      <%= link_to "voir!", article_path(article.id) %>
-    </li>
+  <div>
+    <% @articles.each do |article| %>
+      <div class="article-card">
+        <div><%= cl_image_tag article.main_picture %></div>
+        <div class="article-card-content">
+          <%= article.title%>
+          <!-- <%#= sanitize article.text %>  -->
 
-  <% end %>
-</ul>
+        </div>
+          <%= link_to "voir!", article_path(article.id) %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
