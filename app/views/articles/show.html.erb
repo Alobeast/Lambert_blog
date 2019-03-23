@@ -9,21 +9,37 @@
 <!-- CAROUSEL -->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= cl_image_tag @article.main_picture, class:"d-block w-100" %>
-        </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @article.sub_picture1, class:"d-block w-100" %>
-        </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @article.sub_picture_2, class:"d-block w-100" %>
-        </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @article.sub_picture3, class:"d-block w-100" %>
-        </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @article.sub_picture4, class:"d-block w-100" %>
-        </div>
+
+        <% if @article.main_picture.present?  %>
+          <div class="carousel-item active">
+            <%= cl_image_tag @article.main_picture, class:"d-block w-100" %>
+          </div>
+        <% end %>
+
+        <% if @article.sub_picture1.present?  %>
+          <div class="carousel-item">
+            <%= cl_image_tag @article.sub_picture1, class:"d-block w-100" %>
+          </div>
+        <% end %>
+
+        <% if @article.sub_picture_2.present?  %>
+          <div class="carousel-item">
+            <%= cl_image_tag @article.sub_picture_2, class:"d-block w-100" %>
+          </div>
+        <% end %>
+
+        <% if @article.sub_picture3.present?  %>
+          <div class="carousel-item">
+            <%= cl_image_tag @article.sub_picture3, class:"d-block w-100" %>
+          </div>
+        <% end %>
+
+        <% if @article.sub_picture4.present?  %>
+          <div class="carousel-item">
+            <%= cl_image_tag @article.sub_picture4, class:"d-block w-100" %>
+          </div>
+        <% end %>
+
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
