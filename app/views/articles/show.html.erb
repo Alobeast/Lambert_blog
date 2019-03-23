@@ -1,45 +1,82 @@
-<div>
-  <div>
+<div class="container">
+  <div class="article-area">
+
+    <!-- TITLE -->
     <h1>Ceci est une page qui fait montrer UN article!</h1>
-    <%= @article.title %>
-    <%= sanitize @article.text %>
+    <h1><%= @article.title %></h1>
+    <!-- TITLE -->
 
-    <%= cl_image_tag @article.main_picture %>
-    <%= cl_image_tag @article.sub_picture1 %>
-    <%= cl_image_tag @article.sub_picture_2 %>
-    <%= cl_image_tag @article.sub_picture3 %>
-    <%= cl_image_tag @article.sub_picture4 %>
-  </div>
-<%= link_to "Editer?", edit_article_path(@article)  %>
-<%= link_to "EFFACER!", article_path(@article),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-  <div>
+<!-- CAROUSEL -->
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= cl_image_tag @article.main_picture, class:"d-block w-100" %>
+        </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture1, class:"d-block w-100" %>
+        </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture_2, class:"d-block w-100" %>
+        </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture3, class:"d-block w-100" %>
+        </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture4, class:"d-block w-100" %>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+<!-- CAROUSEL -->
+
+<!-- ARTICLE TEXT -->
     <div>
-      <div>
-        <h3>Commentaires!</h3>
-        <% if @article.comments.empty? %>
-        <p>Soyez le preums a lacher un comms</p>
-        <% else %>
-        <ul>
-          <% @article.comments.each do |comment| %>
-          <li>
-            <%= comment.text %>
-            <%= link_to "Delete", comment_path(comment),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
+      <%= sanitize @article.text %>
+    </div>
+ <!-- ARTICLE TEXT -->
 
-          </li>
-          <% end %>
-        </ul>
-        <% end %>
-      </div>
-    </div>
-  <div>
-      <div>
-        <%= render "comments/new" %>
-      </div>
-    </div>
   </div>
+
+  <!-- EDIT/DELETE -->
+  <div>
+    <%= link_to "Editer?", edit_article_path(@article)  %>
+    <%= link_to "EFFACER!", article_path(@article),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
+  </div>
+  <!-- EDIT/DELETE -->
+
+  <!-- COMMENT SECTION -->
+  <div>
+    <h3>Commentaires!</h3>
+    <% if @article.comments.empty? %>
+    <p>Soyez le preums a lacher un comms</p>
+    <% else %>
+    <ul>
+      <% @article.comments.each do |comment| %>
+      <li>
+        <%= comment.text %>
+        <%= link_to "Delete", comment_path(comment),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
+  <div>
+    <%= render "comments/new" %>
+  </div>
+  <!-- COMMENT SECTION -->
+
 
 </div>
