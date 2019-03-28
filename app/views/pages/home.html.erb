@@ -3,16 +3,19 @@
 
   <div>
     <% @articles.each do |article| %>
-      <div class="article-card">
-        <div><%= cl_image_tag article.main_picture %></div>
-        <div class="article-card-content">
-          <%= article.title%>
-          <!-- <%#= sanitize article.text %>  -->
-
-        </div>
-          <%= link_to "voir!", article_path(article.id) %>
+    <div class="card-article pointer" onclick=document.location="<%= article_path(article) %>">
+      <div class="card-article-image"><%= cl_image_tag article.main_picture, class:"card-article-image" %></div>
+      <div class=card-article-infos>
+        <h2><%= article.title%></h2>
+        <p>un petit sous-titre descriptif en dessous?</p>
+        <p>Article commis le <%= article.created_at.strftime("%d %b %Y") %></p>
+        <!-- <%#= sanitize article.text %>  -->
       </div>
+
+
+    </div>
     <% end %>
+
   </div>
 
 </div>
