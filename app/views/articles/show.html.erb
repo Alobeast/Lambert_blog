@@ -62,10 +62,13 @@
 
   <!-- EDIT/DELETE -->
   <div>
-    <%= link_to "Editer?", edit_article_path(@article)  %>
-    <%= link_to "EFFACER!", article_path(@article),
-    method: :delete,
-    data: { confirm: "Are you sure?" } %>
+    <% if policy(@article).update? %>
+      <h3>Champ réservé aux BG et aux admins!</h3>
+      <%= link_to "Editer?", edit_article_path(@article)  %>
+      <%= link_to "EFFACER!", article_path(@article),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    <% end %>
   </div>
   <!-- EDIT/DELETE -->
 
@@ -79,9 +82,11 @@
       <% @article.comments.each do |comment| %>
       <li>
         <%= comment.text %>
-        <%= link_to "Delete", comment_path(comment),
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
+        <% if policy(comment).destroy? %>
+          <%= link_to "Delete", comment_path(comment),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+        <% end %>
 
       </li>
       <% end %>
