@@ -9,7 +9,8 @@
 // }
 .carousel {
   width:960px;
-  height:540px;
+  height:600px;
+  object-fit: cover;
 }
 
 .img.d-block.w-75.img {
@@ -18,5 +19,6 @@
 
 .carousel-control-prev {
     // left: 0;
-    margin-left: 175px;
+    margin-left: 140px;
 }
+
