@@ -2,42 +2,41 @@
   <div class="article-area">
 
     <!-- TITLE -->
-    <h1>Ceci est une page qui fait montrer UN article!</h1>
     <h1><%= @article.title %></h1>
     <!-- TITLE -->
 
-<!-- CAROUSEL -->
+    <!-- CAROUSEL -->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
 
         <% if @article.main_picture.present?  %>
-          <div class="carousel-item active">
-            <%= cl_image_tag @article.main_picture, class:"d-block w-100" %>
-          </div>
+        <div class="carousel-item active">
+          <%= cl_image_tag @article.main_picture, class:"d-block w-100 img" %>
+        </div>
         <% end %>
 
         <% if @article.sub_picture1.present?  %>
-          <div class="carousel-item">
-            <%= cl_image_tag @article.sub_picture1, class:"d-block w-100" %>
-          </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture1, class:"d-block w-100 img" %>
+        </div>
         <% end %>
 
         <% if @article.sub_picture_2.present?  %>
-          <div class="carousel-item">
-            <%= cl_image_tag @article.sub_picture_2, class:"d-block w-100" %>
-          </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture_2, class:"d-block w-100 img" %>
+        </div>
         <% end %>
 
         <% if @article.sub_picture3.present?  %>
-          <div class="carousel-item">
-            <%= cl_image_tag @article.sub_picture3, class:"d-block w-100" %>
-          </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture3, class:"d-block w-100 img" %>
+        </div>
         <% end %>
 
         <% if @article.sub_picture4.present?  %>
-          <div class="carousel-item">
-            <%= cl_image_tag @article.sub_picture4, class:"d-block w-100" %>
-          </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @article.sub_picture4, class:"d-block w-100 img" %>
+        </div>
         <% end %>
 
       </div>
@@ -50,30 +49,33 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-<!-- CAROUSEL -->
+    <!-- CAROUSEL -->
 
-<!-- ARTICLE TEXT -->
+    <!-- ARTICLE TEXT -->
     <div>
       <%= sanitize @article.text %>
     </div>
- <!-- ARTICLE TEXT -->
+    <!-- ARTICLE TEXT -->
 
-  </div>
 
-  <!-- EDIT/DELETE -->
-  <div>
-    <% if policy(@article).update? %>
+
+    <!-- EDIT/DELETE -->
+    <div>
+      <% unless current_user == nil %>
+      <% if policy(@article).update? %>
       <h3>Champ réservé aux BG et aux admins!</h3>
       <%= link_to "Editer?", edit_article_path(@article)  %>
       <%= link_to "EFFACER!", article_path(@article),
       method: :delete,
       data: { confirm: "Are you sure?" } %>
-    <% end %>
+      <% end %>
+      <% end %>
+    </div>
   </div>
   <!-- EDIT/DELETE -->
 
   <!-- COMMENT SECTION -->
-  <div>
+  <div class="comment-area">
     <h3>Commentaires!</h3>
     <% if @article.comments.empty? %>
     <p>Soyez le preums a lacher un comms</p>
@@ -81,21 +83,25 @@
     <ul>
       <% @article.comments.each do |comment| %>
       <li>
+        <%= comment.user.name %> dit:
         <%= comment.text %>
+        <% unless current_user == nil %>
         <% if policy(comment).destroy? %>
-          <%= link_to "Delete", comment_path(comment),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
+        <%= link_to "Delete", comment_path(comment),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+        <% end %>
         <% end %>
 
       </li>
       <% end %>
     </ul>
     <% end %>
-  </div>
 
-  <div>
-    <%= render "comments/new" %>
+
+    <div>
+      <%= render "comments/new" %>
+    </div>
   </div>
   <!-- COMMENT SECTION -->
 

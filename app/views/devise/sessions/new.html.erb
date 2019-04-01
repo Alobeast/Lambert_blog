@@ -1,11 +1,12 @@
-<h2>Log in</h2>
+<h1>Vous êtes déjà membre?</h1>
+<h2>C'est ici pour le Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
+    <%= f.input :name,
+                required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "name" }%>
     <%= f.input :password,
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
@@ -13,8 +14,13 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Confirmer", class:"btn btn-outline-success" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<h2>Si vous n'êtes pas déjà membre, c'est par ici</h2>
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-outline-primary" %><br />
+<% end %>
+
+<%#= render "devise/shared/links" %>
